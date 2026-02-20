@@ -1,0 +1,146 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  overflow: hidden;
+  user-select: none;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 12px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8892b0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 2px;
+  background: #16213e;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.view-toggle button {
+  background: none;
+  border: none;
+  color: #8892b0;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.view-toggle button.active {
+  background: #0f3460;
+  color: #64ffda;
+}
+
+#radar-view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#radar-canvas {
+  border-radius: 50%;
+}
+
+#list-view {
+  flex: 1;
+  overflow-y: auto;
+}
+
+#search {
+  width: 100%;
+  padding: 8px 12px;
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 12px;
+  margin-bottom: 8px;
+  outline: none;
+  font-family: inherit;
+}
+
+#search:focus {
+  border-color: #64ffda;
+}
+
+#port-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+#port-table th {
+  text-align: left;
+  padding: 6px 8px;
+  color: #8892b0;
+  border-bottom: 1px solid #0f3460;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#port-table th:hover {
+  color: #64ffda;
+}
+
+#port-table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid rgba(15, 52, 96, 0.5);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.status-healthy { color: #64ffda; }
+.status-collision { color: #ff4444; animation: pulse 1s infinite; }
+.status-new { color: #ffd93d; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.tooltip {
+  position: fixed;
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.tooltip .port-num { color: #64ffda; font-weight: 600; }
+.tooltip .process-name { color: #e0e0e0; }
+.tooltip .pid { color: #8892b0; }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  font-size: 11px;
+  color: #8892b0;
+}

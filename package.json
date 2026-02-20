@@ -1,0 +1,62 @@
+{
+  "name": "port-collision-radar",
+  "version": "1.0.0",
+  "description": "macOS menubar app that monitors listening TCP ports and detects collisions",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test 'test/**/*.test.js'",
+    "generate-icon": "node scripts/generate-icon.js",
+    "build": "npm run generate-icon && electron-builder --mac",
+    "build:publish": "npm run generate-icon && electron-builder --mac --publish always"
+  },
+  "build": {
+    "appId": "com.franmora.port-collision-radar",
+    "productName": "Port Collision Radar",
+    "files": [
+      "main.js",
+      "app.js",
+      "index.html",
+      "styles.css",
+      "scanner.js",
+      "collisions.js",
+      "createIcon.js",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": "universal"
+        }
+      ],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "title": "Port Collision Radar",
+      "iconSize": 80,
+      "contents": [
+        { "x": 130, "y": 220 },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "fran-mora",
+      "repo": "port-collision-radar"
+    },
+    "afterSign": "scripts/notarize.js"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "@electron/notarize": "^2.5.0"
+  },
+  "dependencies": {
+    "menubar": "^9.5.0"
+  }
+}

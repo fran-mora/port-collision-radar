@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Port Collision Radar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Port Radar</h1>
+      <div class="view-toggle">
+        <button id="btn-radar" class="active">Radar</button>
+        <button id="btn-list">List</button>
+      </div>
+    </header>
+    <div id="radar-view">
+      <canvas id="radar-canvas" width="380" height="380"></canvas>
+    </div>
+    <div id="list-view" style="display:none;">
+      <input type="text" id="search" placeholder="Filter ports...">
+      <table id="port-table">
+        <thead>
+          <tr><th data-col="port">Port</th><th data-col="process">Process</th><th data-col="pid">PID</th><th data-col="status">Status</th></tr>
+        </thead>
+        <tbody id="port-tbody"></tbody>
+      </table>
+    </div>
+    <div id="tooltip" class="tooltip" style="display:none;"></div>
+    <footer>
+      <span id="port-count">0 ports</span>
+      <span id="scan-time"></span>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
