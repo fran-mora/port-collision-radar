@@ -1,6 +1,6 @@
 {
   "name": "port-collision-radar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "macOS menubar app that monitors listening TCP ports and detects collisions",
   "main": "main.js",
   "scripts": {
