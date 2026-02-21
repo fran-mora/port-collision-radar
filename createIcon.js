@@ -105,6 +105,7 @@ function createTrayIcon(hasCollision) {
 
   const png = buildPNG(size, size, buf);
   const icon = nativeImage.createFromBuffer(png, { width: size, height: size });
+  icon.setTemplateImage(true);
 
   if (hasCollision) cachedCollision = icon;
   else cachedNormal = icon;
