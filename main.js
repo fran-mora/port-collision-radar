@@ -5,6 +5,7 @@ const path = require('path');
 const { parseLsofOutput } = require('./scanner');
 const { CollisionDetector } = require('./collisions');
 const { createTrayIcon } = require('./createIcon');
+const { autoUpdater } = require('electron-updater');
 
 const detector = new CollisionDetector();
 let mb;
@@ -77,6 +78,14 @@ app.whenReady().then(() => {
 
     performScan();
     scanInterval = setInterval(performScan, 4000);
+
+    // Check for updates silently — downloads and installs on quit
+    autoUpdater.logger = null;
+    autoUpdater.autoDownload = true;
+    autoUpdater.autoInstallOnAppQuit = true;
+    autoUpdater.checkForUpdatesAndNotify();
+    // Re-check every 4 hours for long-running sessions
+    setInterval(() => autoUpdater.checkForUpdatesAndNotify(), 4 * 60 * 60 * 1000);
   });
 
   ipcMain.on('quit-app', () => app.quit());
