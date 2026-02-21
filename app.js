@@ -338,6 +338,13 @@ ipcRenderer.on('port-update', (_event, data) => {
   }
 });
 
+// Quit button
+document.getElementById('btn-quit').addEventListener('click', () => {
+  const { app } = require('electron').remote || {};
+  // remote may not be available; use IPC instead
+  ipcRenderer.send('quit-app');
+});
+
 // Initial data request
 ipcRenderer.invoke('get-ports').then(data => {
   ports = data;

@@ -79,6 +79,8 @@ app.whenReady().then(() => {
     scanInterval = setInterval(performScan, 4000);
   });
 
+  ipcMain.on('quit-app', () => app.quit());
+
   ipcMain.handle('get-ports', () => {
     // Return current data without triggering an extra scan
     return detector.getPortData();
