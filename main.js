@@ -84,8 +84,8 @@ app.whenReady().then(() => {
     autoUpdater.autoDownload = true;
     autoUpdater.autoInstallOnAppQuit = true;
     autoUpdater.checkForUpdatesAndNotify();
-    // Re-check every 4 hours for long-running sessions
-    setInterval(() => autoUpdater.checkForUpdatesAndNotify(), 4 * 60 * 60 * 1000);
+    // Re-check every 24 hours for long-running sessions
+    setInterval(() => autoUpdater.checkForUpdatesAndNotify(), 24 * 60 * 60 * 1000);
   });
 
   ipcMain.on('quit-app', () => app.quit());
