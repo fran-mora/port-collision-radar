@@ -10,6 +10,8 @@ You sigh. You run `lsof -i :3000`. You kill the rogue process. You move on with 
 
 I got tired of this. So I built **Port Collision Radar**, a macOS menubar app that watches your listening TCP ports in real-time and tells you the moment something takes over a port it shouldn't.
 
+![Port Collision Radar demo](https://raw.githubusercontent.com/fran-mora/port-collision-radar/main/demo.gif)
+
 ## What it actually does
 
 The app sits in your menubar and scans `lsof` every 4 seconds. It tracks which process owns which port. When ownership changes — say, a zombie Node process grabs port 3000 before your dev server can — it flags it as a **collision**.

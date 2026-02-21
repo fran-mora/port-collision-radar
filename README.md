@@ -2,7 +2,9 @@
 
 **A macOS menubar app that watches your listening ports so you don't have to.**
 
-<!-- TODO: Add demo GIF here -->
+<p align="center">
+  <img src="demo.gif" alt="Port Collision Radar demo" width="400">
+</p>
 
 ## What it does
 
